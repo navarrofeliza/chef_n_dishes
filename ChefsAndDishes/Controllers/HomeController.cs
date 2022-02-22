@@ -49,7 +49,7 @@ namespace ChefsAndDishes.Controllers
         }
 
         [HttpGet]
-        [Route("")]
+        [Route("DishView")]
         public IActionResult DishView()
         {
             List<Chef> AllChefs = _context.Chefs.ToList();
