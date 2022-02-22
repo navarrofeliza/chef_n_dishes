@@ -1,0 +1,42 @@
+@model Dish
+
+<h1 class="text-center">Add a Dish!</h1>
+<h2 class="text-center"><a href="/Dishes">Dishes</a></h2>
+
+<div class="table-striped">
+    <form asp-action="AddDish" asp-controller="Home" method="POST">
+        <div class="form-group">
+            <label asp-for="Name">Name</label>
+            <input type="text" asp-for="Name" class="form-control">
+            <span asp-validation-for="Name"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Calories">Calories</label>
+            <input type="text" asp-for="Calories" class="form-control">
+            <span asp-validation-for="Calories"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Tastiness">Tastiness</label>
+            <input asp-for="Tastiness" type="number" min="0" max="10" class="form-control">
+            <span asp-validation-for="Tastiness"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="ChefId">Chef</label>
+            <select class="form-control" asp-for="ChefId">
+                <option selected>Choose a Chef</option>
+                @foreach (Chef chef in ViewBag.allchefs)
+                {
+                    <option value="@chef.ChefId">@chef.FirstName</option>
+                }
+            </select>
+        </div>
+        <div class="form-group">
+            <label asp-for="Description">Description</label>
+            <textarea asp-for="Description" cols="30" rows="10"></textarea>
+            <span asp-validation-for="Description"></span>
+        </div>
+        <div class="form-group">
+            <button type="submit">Add Dish!</button>
+        </div>
+    </form>
+</div>
